@@ -221,6 +221,69 @@ function switchLaptopTab(tabId) {
 })();
 
 (function() {
+    function initOpModelCarousel() {
+        var section = document.querySelector('.op-model-section');
+        if (!section) return;
+        var cardsEl = document.getElementById('op-model-cards');
+        var cards = section.querySelectorAll('.op-model-card');
+        var dots = section.querySelectorAll('.op-model-dot');
+        var progressBar = document.getElementById('op-model-progress-bar');
+        var dotsViewport = document.getElementById('op-model-dots-viewport');
+        var total = cards.length;
+        var current = 0;
+        var interval = 5000;
+        var dotWidth = 48;
+        function scrollDotsViewport(idx) {
+            if (!dotsViewport || !dots.length) return;
+            var maxScroll = dotsViewport.scrollWidth - dotsViewport.clientWidth;
+            if (maxScroll <= 0) return;
+            var scrollPos = Math.min(maxScroll, Math.max(0, (idx - 2) * dotWidth));
+            dotsViewport.scrollTo({ left: scrollPos, behavior: 'smooth' });
+        }
+        function scrollToCard(idx) {
+            var card = cards[idx];
+            if (card && cardsEl) {
+                var scrollOffset = (card.offsetLeft + card.offsetWidth / 2) - (cardsEl.clientWidth / 2);
+                cardsEl.scrollTo({ left: Math.max(0, scrollOffset), behavior: 'smooth' });
+            }
+        }
+        function goTo(step) {
+            current = (step + total) % total;
+            cards.forEach(function(c, i) {
+                c.classList.toggle('op-model-card-active', i === current);
+            });
+            dots.forEach(function(d, i) {
+                d.classList.toggle('op-model-dot-active', i === current);
+            });
+            scrollToCard(current);
+            scrollDotsViewport(current);
+            if (progressBar && dots.length > 0) {
+                progressBar.style.left = '18px';
+                var lineWidth = current > 0 ? (current * dotWidth) : 0;
+                progressBar.style.width = lineWidth + 'px';
+            }
+        }
+        var timer = setInterval(function() {
+            goTo(current + 1);
+        }, interval);
+        dots.forEach(function(dot, i) {
+            dot.addEventListener('click', function() {
+                goTo(i);
+                clearInterval(timer);
+                timer = setInterval(function() { goTo(current + 1); }, interval);
+            });
+        });
+        window.addEventListener('resize', function() { goTo(current); });
+        goTo(0);
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initOpModelCarousel);
+    } else {
+        initOpModelCarousel();
+    }
+})();
+
+(function() {
     function initPricingShowMore() {
         var section = document.getElementById('pricing-table-section');
         var btn = document.querySelector('.pricing-show-more');
