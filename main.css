@@ -582,8 +582,9 @@
 .aboutus-promise-tagline { font-family: var(--font-vorcas); font-size: 22px; font-weight: 700; color: var(--color-primary); text-align: center; margin: 24px 0 0; letter-spacing: 0.02em; }
 .aboutus-tagline-witness { font-family: var(--font-klaft); color: var(--color-text); }
 .aboutus-signature { padding: 64px 0 80px; }
-.aboutus-signature-text { font-family: var(--font-klaft); font-size: 20px; color: var(--color-text-muted); text-align: center; margin: 0 0 8px; letter-spacing: 0.1em; }
-.aboutus-signature-accent { color: var(--color-primary); }
+.aboutus-signature-text { font-family: var(--font-klaft); font-size: 20px; color: var(--color-text-muted); text-align: center; margin: 0 0 8px; letter-spacing: 0.1em; position: relative; z-index: 1; padding: 24px 16px; }
+.aboutus-signature-text::before { content: ""; position: absolute; left: 42%; top: 50%; transform: translate(-50%, -50%); width: 190px; height: 160px; background-color: #C0C0C0; background-image: none; mask-image: url("images/logo/Blackbg.svg"); mask-size: contain; mask-position: center; mask-repeat: no-repeat; -webkit-mask-image: url("images/logo/Blackbg.svg"); -webkit-mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; opacity: 0.25; z-index: -1; pointer-events: none; }
+.aboutus-signature-accent { color: var(--color-primary); font-size: 1.4em; }
 .aboutus-signature-line { width: 180px; height: 2px; background: var(--color-text); margin: 0 auto; }
 .aboutus-signature-cards { display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; margin-top: 48px; }
 .aboutus-signature-card { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 200px; }
@@ -598,7 +599,10 @@
 .aboutus-signature-established { font-family: var(--font-klaft); font-size: 12px; letter-spacing: 0.12em; color: var(--color-text-muted); text-align: center; margin: 48px 0 12px; text-transform: uppercase; }
 .aboutus-signature-quote { font-family: var(--font-vorcas); font-size: 14px; line-height: 1.4; color: var(--color-text); text-align: center; margin: 0; padding: 0; border: none; font-style: italic; }
 .aboutus-signature-quote-accent { color: var(--color-primary); }
-
+@media (max-width: 767px) {
+  .aboutus-signature-accent { display: block; margin-bottom: 4px; }
+  .aboutus-signature-text::before { left: 50%; width: 230px; height: 193px; }
+}
 .aboutus-demo { padding: 80px 0 100px; background: var(--color-bg); }
 .aboutus-demo-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; max-width: 1000px; margin: 0 auto; }
 .aboutus-demo-heading { font-family: var(--font-klaft); font-size: clamp(24px, 3vw, 32px); line-height: 1.25; color: var(--color-text); font-weight: 700; margin: 0 0 12px; }
