@@ -106,7 +106,7 @@
   .demo-tabs { gap: 8px; padding: 12px 16px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; justify-content: flex-start; }
   .demo-tabs .laptop-tab { font-size: 13px; padding: 6px 10px; flex-shrink: 0; }
 }
-.pos-cta-section { padding: 8px 24px 100px; background: var(--color-bg); text-align: center; }
+.pos-cta-section { padding: 8px 24px 0px; background: var(--color-bg); text-align: center; }
 .pos-cta-wrap { max-width: 720px; margin: 0 auto; }
 .pos-cta-heading { font-family: var(--font-klaft); font-size: 30px; line-height: 1.15; color: var(--color-text); margin: 0 0 20px; font-weight: 700; }
 .pos-cta-text { font-size: 18px; line-height: 1.5; color: var(--color-text-muted); margin: 0 0 28px; }
@@ -313,11 +313,13 @@
 }
 .testimonial-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.1); border-color: var(--color-primary); }
 .testimonial-card-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; margin-bottom: 18px; flex-shrink: 0; }
+.testimonial-card-initials { display: flex; align-items: center; justify-content: center; background: var(--color-primary); color: #fff; font-size: 16px; font-weight: 600; text-transform: uppercase; line-height: 1; }
 .testimonial-card-quote { font-size: 15px; line-height: 1.55; color: var(--color-text); margin: 0 0 20px; flex: 1; }
 .testimonial-card-name { font-family: 'Dancing Script', cursive; font-size: 22px; font-weight: 600; color: var(--color-text); display: block; }
 .testimonial-card-role { font-size: 14px; color: var(--color-text-muted); margin-top: 4px; display: block; }
 .testimonial-card-video { padding: 0; min-height: 420px; background: #2a2a2a; border-color: var(--color-soft); }
 .testimonial-card-video .testimonial-card-avatar { position: absolute; top: 24px; left: 24px; z-index: 2; margin: 0; border: 2px solid rgba(255,255,255,.9); }
+.testimonial-card-video .testimonial-card-initials { background: rgba(255,255,255,.2); color: #fff; }
 .testimonial-card-video-bg { position: absolute; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; }
 .testimonial-card-video-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.2) 50%, transparent 100%); z-index: 1; }
 .testimonial-card-play { position: absolute; bottom: 24px; right: 24px; z-index: 2; width: 56px; height: 56px; border-radius: 50%; background: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--color-primary); transition: transform .2s, background .2s, box-shadow .2s; padding: 0; box-shadow: 0 4px 16px rgba(0,0,0,.12); }
@@ -354,6 +356,7 @@
     max-width: 100%;
   }
   .testimonial-card-avatar { width: 40px; height: 40px; margin-bottom: 12px; }
+  .testimonial-card-initials { font-size: 14px; }
   .testimonial-card-quote { word-wrap: break-word; overflow-wrap: break-word; flex: 0 1 auto; font-size: 14px; line-height: 1.5; margin-bottom: 12px; }
   .testimonial-card-name { font-size: 18px; }
   .testimonial-card-role { font-size: 13px; margin-top: 2px; }
